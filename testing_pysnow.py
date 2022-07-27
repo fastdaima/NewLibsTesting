@@ -1,7 +1,8 @@
 from pysnow import Client, QueryBuilder
 from pprint import pprint
 
-client = Client("dev108399", user="Resolve", password="Resolve@123")
+client = Client("instance_name", user="username", password="password") # instance_name without
+# service-now.com
 incident = client.resource(api_path='/table/incident')
 
 qb = (QueryBuilder().field('priority').less_than_or_equal(3).AND().field('state').equals("3"))

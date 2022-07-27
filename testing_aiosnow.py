@@ -4,7 +4,7 @@ from aiosnow.models.table.declared import IncidentModel as Incident
 
 
 async def main():
-    client = aiosnow.Client("dev108399.service-now.com", basic_auth=("Resolve", "Resolve@123"))
+    client = aiosnow.Client("instance", basic_auth=("username", "password"))
 
     async with Incident(client, table_name="incident") as inc:
         query = aiosnow.select(
