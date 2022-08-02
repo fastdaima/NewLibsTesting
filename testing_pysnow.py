@@ -1,5 +1,6 @@
 from pysnow import Client, QueryBuilder
 import argparse
+from pprint import pprint
 
 ap = argparse.ArgumentParser()
 
@@ -25,25 +26,29 @@ def update_priority(instance_name, username, password):
         impact = int(record['impact'])
         urgency = int(record['urgency'])
         comments_work_notes = record['comments_and_work_notes']
+        pprint(number)
+        if number != "INC0011491":
+            pprint(record)
+            break
 
-        if impact == urgency:
-            impact += 1
-        elif impact < urgency:
-            impact += 1
-        elif urgency < impact:
-            urgency += 1
-
-        update = {
-            'impact': str(impact),
-            'urgency': str(urgency),
-            'comments_and_work_notes': comments_work_notes + "Priority reduced by 1"
-        }
-
-        response = incident.update(query={'number': number}, payload=update)
-        output.append(
-            f"Updated: {response['number']}, new priority: {response['priority']}, response: {response['comments_and_work_notes']}")
-
-    print(output)
+    #     if impact == urgency:
+    #         impact += 1
+    #     elif impact < urgency:
+    #         impact += 1
+    #     elif urgency < impact:
+    #         urgency += 1
+    #
+    #     update = {
+    #         'impact': str(impact),
+    #         'urgency': str(urgency),
+    #         'comments_and_work_notes': comments_work_notes + "Priority reduced by 1"
+    #     }
+    #
+    #     response = incident.update(query={'number': number}, payload=update)
+    #     output.append(
+    #         f"Updated: {response['number']}, new priority: {response['priority']}, response: {response['comments_and_work_notes']}")
+    #
+    # print(output)
 
 
 if __name__ == '__main__':
