@@ -39,3 +39,8 @@ def get_list():
 @app.route('/api/service/idp/{id}', methods=['GET'])
 def get_item():
     pass
+
+
+if __name__ == '__main__':
+    _ = MongoDBConnection()
+    # incomplete
